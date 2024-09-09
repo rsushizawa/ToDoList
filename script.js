@@ -1,32 +1,32 @@
-const listContainer = document.getElementById("listContainer");
-const taskTitle = document.getElementById("taskTitle");
+var listContainer = document.getElementById("listContainer");
+var taskTitle = document.getElementById("taskTitle");
 
 function addTask(){
-    if (taskTitle.value = ""){
+    if (taskTitle.value === ""){
         alert("Input value null");
     }
     else{
         let li = document.createElement("li");
-        let.innerHTML = taskTitle.value;
-        let span = document.createElement("span");
-        span.innerHTML = "X";
-        li.appendChild(span);
+        li.innerHTML = taskTitle.value;
         listContainer.appendChild(li);
+        let span = document.createElement("span");
+        span.innerHTML = "\u00d7";
+        li.appendChild(span);x
     }
     taskTitle.value = "";
-    loadTask();
+    saveTask();
 }
 
-listContainer.addEventListener("click", taskFunctions(element));
+listContainer.addEventListener("onclick", taskFunctions(e));
 
-function taskFunctions(element){
-    if (element.target.tagName = "li"){
-        element.target.classList.toggle("Checked");
-        loadTask();
+function taskFunctions(e){
+    if (e.target.tagName === "li"){
+        e.target.classList.toggle("Checked");
+        saveTask();
     }
-    else if (element.taget.tagName = "span"){
-        element.taget.remove();
-        loadTask();
+    else if (e.taget.tagName === "span"){
+        e.taget.parentElement.remove();
+        saveTask();
     }
 }
 
@@ -36,6 +36,11 @@ function saveTask(){
 
 function loadTask(){
     listContainer.innerHTML = localStorage.getItem("taskList");
+}
+
+function clearTasks(){
+    localStorage.clear("taskList");
+    loadTask();
 }
 
 loadTask();
