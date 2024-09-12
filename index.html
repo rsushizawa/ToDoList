@@ -8,12 +8,11 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="listTitle">Titulo</h1>
-        <ul id="listContainer"></ul>
-    </div>
-    <div id="addBox">
+        <h1 id="listTitle">ToDo List</h1>
         <input type="text" id="taskTitle">
-        <button id="addBtn" onclick="addTask()">+</button>
+        <button onclick="addTask()">+</button>
+        <button onclick="clearTasks()">clear</button>
+        <ul id="listContainer"></ul>
     </div>
     <script src="script.js"></script>
 </body>
